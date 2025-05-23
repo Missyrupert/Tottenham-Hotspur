@@ -1,0 +1,32 @@
+// script.js
+function showSection(sectionId) {
+  document.querySelectorAll('.content-section').forEach(sec => sec.style.display = 'none');
+  document.getElementById(sectionId).style.display = 'block';
+}
+
+// Example data for timeline
+const timelineData = [
+  {
+    title: "Founding (1882)",
+    summary: "Spurs founded by schoolboys from the local grammar school.",
+    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/Tottenham_Hotspur_logo.svg/200px-Tottenham_Hotspur_logo.svg.png"
+  },
+  {
+    title: "1961 Double",
+    summary: "First club in the 20th century to win league and FA Cup in same season.",
+    image: "https://upload.wikimedia.org/wikipedia/commons/9/93/Spurs_Double_Winning_Team.jpg"
+  }
+  // Add more eras...
+];
+
+function renderTimeline() {
+  const section = document.getElementById('timeline');
+  section.innerHTML = '';
+  timelineData.forEach(event => {
+    const card = document.createElement('div');
+    card.className = 'card';
+    card.innerHTML = `<h2>${event.title}</h2><img src="${event.image}" alt="${event.title}" width="200"><p>${event.summary}</p>`;
+    section.appendChild(card);
+  });
+}
+renderTimeline();

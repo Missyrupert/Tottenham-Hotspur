@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Tottenham Hotspur History Trail</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <nav>
+    <button onclick="showSection('timeline')">Timeline</button>
+    <button onclick="showSection('achievements')">Achievements</button>
+    <button onclick="showSection('players')">Players & Managers</button>
+    <button onclick="showSection('fans')">Celebrity Fans</button>
+  </nav>
+  <main>
+    <section id="timeline" class="content-section"> <!-- Timeline content injected here --> </section>
+    <section id="achievements" class="content-section" style="display:none"></section>
+    <section id="players" class="content-section" style="display:none"></section>
+    <section id="fans" class="content-section" style="display:none"></section>
+  </main>
+  <script src="script.js"></script>
+</body>
+</html>
