@@ -5,20 +5,20 @@ body {
   background: #f7faff;
   min-height: 100vh;
   position: relative;
+  /* Remove old background */
+  /* We'll use an SVG as a true watermark */
 }
-
-/* Spurs emblem as subtle background */
 body::before {
   content: "";
   position: fixed;
   z-index: 0;
   top: 0; left: 0; width: 100vw; height: 100vh;
-  background: url('https://upload.wikimedia.org/wikipedia/commons/1/1a/Tottenham_Hotspur_logo.svg') center center no-repeat;
-  background-size: 45vw auto;
+  background: url('https://upload.wikimedia.org/wikipedia/commons/1/1a/Tottenham_Hotspur_logo.svg') center 120px no-repeat;
+  background-size: 480px auto;
   opacity: 0.10;
   pointer-events: none;
+  transition: opacity 0.5s;
 }
-
 nav {
   background: #132257;
   padding: 0.5em 1em;
@@ -43,33 +43,28 @@ nav button:hover, nav button.active {
   background: #ffd700;
   color: #132257;
 }
-
 header {
   text-align: center;
   margin: 2em 0 1em 0;
   z-index: 1;
   position: relative;
 }
-
 main {
-  max-width: 900px;
+  max-width: 1100px;
   margin: auto;
   padding: 2em 1em 4em 1em;
   position: relative;
   z-index: 1;
 }
-
 .content-section {
   display: block;
 }
-
 .card-list {
   display: flex;
   flex-wrap: wrap;
   gap: 1.5em;
   justify-content: flex-start;
 }
-
 .card {
   background: #fff;
   border-radius: 12px;
@@ -83,13 +78,11 @@ main {
   position: relative;
   z-index: 2;
 }
-
 .card:hover {
   box-shadow: 0 4px 22px rgba(19,34,87,0.12);
   transform: translateY(-2px) scale(1.03);
   background: #f9f6e7;
 }
-
 .card img {
   max-width: 100%;
   height: auto;
@@ -97,18 +90,15 @@ main {
   margin-bottom: 0.7em;
   display: block;
 }
-
 .card h2 {
   margin-top: 0;
   margin-bottom: 0.4em;
   font-size: 1.2em;
 }
-
 .card p {
   margin: 0.3em 0;
   font-size: 1em;
 }
-
 footer {
   background: #132257;
   color: #fff;
@@ -119,8 +109,7 @@ footer {
   position: relative;
   font-size: 0.92em;
 }
-
-@media (max-width: 600px) {
+@media (max-width: 700px) {
   nav {
     flex-direction: column;
     align-items: stretch;
@@ -131,5 +120,9 @@ footer {
   }
   main {
     padding: 1em 0.5em 3em 0.5em;
+  }
+  body::before {
+    background-size: 85vw auto;
+    top: 100px;
   }
 }
