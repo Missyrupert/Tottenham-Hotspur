@@ -1,4 +1,5 @@
-// DATA SECTION — This is where you edit/add content!
+// --- DATA SECTION ---
+// To add more events/players/etc, just add to these arrays
 
 const timelineData = [
   {
@@ -91,7 +92,7 @@ const fansData = [
   }
 ];
 
-// RENDER FUNCTIONS
+// --- RENDER FUNCTIONS ---
 
 function showSection(sectionId) {
   // Hide all sections
@@ -159,11 +160,9 @@ function renderFans() {
     <small>Sources: Wikipedia, Wikimedia Commons, news sites</small>`;
 }
 
-// Initial Render
+// --- INITIAL RENDER ---
 renderTimeline();
 renderAchievements();
 renderPlayers();
 renderFans();
-showSection('timeline'); // Default
-
-// -- END OF FILE --
+showSection('timeline'); // Show timeline first

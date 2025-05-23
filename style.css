@@ -14,8 +14,8 @@ body::before {
   z-index: 0;
   top: 0; left: 0; width: 100vw; height: 100vh;
   background: url('https://upload.wikimedia.org/wikipedia/commons/1/1a/Tottenham_Hotspur_logo.svg') center center no-repeat;
-  background-size: 50vw auto;
-  opacity: 0.08;
+  background-size: 45vw auto;
+  opacity: 0.10;
   pointer-events: none;
 }
 
@@ -52,7 +52,7 @@ header {
 }
 
 main {
-  max-width: 800px;
+  max-width: 900px;
   margin: auto;
   padding: 2em 1em 4em 1em;
   position: relative;
