@@ -1,32 +1,169 @@
-// script.js
-function showSection(sectionId) {
-  document.querySelectorAll('.content-section').forEach(sec => sec.style.display = 'none');
-  document.getElementById(sectionId).style.display = 'block';
-}
+// DATA SECTION — This is where you edit/add content!
 
-// Example data for timeline
 const timelineData = [
   {
-    title: "Founding (1882)",
-    summary: "Spurs founded by schoolboys from the local grammar school.",
-    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/Tottenham_Hotspur_logo.svg/200px-Tottenham_Hotspur_logo.svg.png"
+    title: "1882: Founded",
+    summary: "Tottenham Hotspur was founded by a group of schoolboys from the local grammar school and church.",
+    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/4/45/First_Tottenham_Hotspur_team_1882.jpg/320px-First_Tottenham_Hotspur_team_1882.jpg"
   },
   {
-    title: "1961 Double",
-    summary: "First club in the 20th century to win league and FA Cup in same season.",
+    title: "1901: FA Cup Glory",
+    summary: "Spurs became the only non-League club to win the FA Cup since the formation of the Football League.",
+    image: "https://upload.wikimedia.org/wikipedia/commons/9/9b/TottenhamHotspurFA1901.jpg"
+  },
+  {
+    title: "1961: The Double",
+    summary: "Spurs made history as the first club in the 20th century to win the League and FA Cup double.",
     image: "https://upload.wikimedia.org/wikipedia/commons/9/93/Spurs_Double_Winning_Team.jpg"
+  },
+  {
+    title: "1984: UEFA Cup Win",
+    summary: "Tottenham win their second European trophy, beating Anderlecht in a penalty shootout at White Hart Lane.",
+    image: "https://upload.wikimedia.org/wikipedia/commons/6/6c/Tottenham_Hotspur_European_Cup_1984.jpg"
+  },
+  {
+    title: "2019: Champions League Final",
+    summary: "Spurs reach their first ever Champions League final after a dramatic win over Ajax, but lose to Liverpool.",
+    image: "https://upload.wikimedia.org/wikipedia/commons/0/03/Tottenham_Hotspur_players_celebrate_after_reaching_2019_UEFA_Champions_League_Final.jpg"
   }
-  // Add more eras...
 ];
 
+const achievementsData = [
+  {
+    title: "League & FA Cup Double (1960-61)",
+    details: "First team in the 20th century to win both the English First Division and the FA Cup in the same season.",
+    image: "https://upload.wikimedia.org/wikipedia/commons/9/93/Spurs_Double_Winning_Team.jpg"
+  },
+  {
+    title: "First British Club to Win European Trophy (1963)",
+    details: "Spurs became the first British club to win a major European competition, lifting the European Cup Winners' Cup.",
+    image: "https://upload.wikimedia.org/wikipedia/commons/8/89/Spurs_1963_European_Cup_Winners_Cup.jpg"
+  },
+  {
+    title: "UEFA Cup Victories",
+    details: "Tottenham have won the UEFA Cup (now Europa League) twice: in 1972 and 1984.",
+    image: "https://upload.wikimedia.org/wikipedia/commons/6/6c/Tottenham_Hotspur_European_Cup_1984.jpg"
+  }
+];
+
+const playersData = [
+  {
+    name: "Bill Nicholson",
+    role: "Manager & Player",
+    bio: "Mr Tottenham. Managed the club to the Double in 1961 and multiple trophies. Joined as a player in 1936 and dedicated his life to Spurs.",
+    image: "https://upload.wikimedia.org/wikipedia/commons/8/8e/Bill_Nicholson.jpg"
+  },
+  {
+    name: "Jimmy Greaves",
+    role: "Striker",
+    bio: "Spurs' greatest ever goalscorer. Scored 266 goals in 379 appearances, famed for his finishing and wit.",
+    image: "https://upload.wikimedia.org/wikipedia/commons/a/a0/Jimmy_Greaves_%281965%29.jpg"
+  },
+  {
+    name: "Glenn Hoddle",
+    role: "Midfielder",
+    bio: "One of English football's most creative midfielders. Revered for his passing and vision.",
+    image: "https://upload.wikimedia.org/wikipedia/commons/4/43/Glenn_Hoddle_1981.jpg"
+  },
+  {
+    name: "Harry Kane",
+    role: "Striker",
+    bio: "Became Spurs' all-time top scorer in 2023. Renowned for finishing, leadership, and loyalty.",
+    image: "https://upload.wikimedia.org/wikipedia/commons/a/a2/Harry_Kane_2018.jpg"
+  }
+];
+
+const fansData = [
+  {
+    name: "Adele",
+    info: "The superstar singer grew up in Tottenham and is a lifelong Spurs supporter.",
+    image: "https://upload.wikimedia.org/wikipedia/commons/6/6e/Adele_2016.jpg"
+  },
+  {
+    name: "Daniel Radcliffe",
+    info: "The Harry Potter actor is a proud Tottenham fan and often attends matches.",
+    image: "https://upload.wikimedia.org/wikipedia/commons/d/d2/Daniel_Radcliffe_2015.jpg"
+  },
+  {
+    name: "Lily Allen",
+    info: "Pop star Lily Allen is an outspoken Spurs supporter, frequently seen at games.",
+    image: "https://upload.wikimedia.org/wikipedia/commons/7/7f/Lily_Allen_%28cropped%29.jpg"
+  }
+];
+
+// RENDER FUNCTIONS
+
+function showSection(sectionId) {
+  // Hide all sections
+  document.querySelectorAll('.content-section').forEach(sec => sec.style.display = 'none');
+  // Show the chosen one
+  document.getElementById(sectionId).style.display = 'block';
+  // Highlight active nav
+  document.querySelectorAll('nav button').forEach(btn => btn.classList.remove('active'));
+  document.querySelector(`nav button[onclick="showSection('${sectionId}')"]`).classList.add('active');
+}
+
+// Timeline
 function renderTimeline() {
   const section = document.getElementById('timeline');
-  section.innerHTML = '';
-  timelineData.forEach(event => {
-    const card = document.createElement('div');
-    card.className = 'card';
-    card.innerHTML = `<h2>${event.title}</h2><img src="${event.image}" alt="${event.title}" width="200"><p>${event.summary}</p>`;
-    section.appendChild(card);
-  });
+  section.innerHTML = `<h2>Timeline</h2>
+    <div class="card-list">${timelineData.map(event => `
+      <div class="card">
+        <img src="${event.image}" alt="${event.title}">
+        <h2>${event.title}</h2>
+        <p>${event.summary}</p>
+      </div>`).join('')}
+    </div>
+    <small>Sources: Wikipedia, Wikimedia Commons, TottenhamHotspur.com</small>`;
 }
+
+// Achievements
+function renderAchievements() {
+  const section = document.getElementById('achievements');
+  section.innerHTML = `<h2>Notable Achievements</h2>
+    <div class="card-list">${achievementsData.map(ach => `
+      <div class="card">
+        <img src="${ach.image}" alt="${ach.title}">
+        <h2>${ach.title}</h2>
+        <p>${ach.details}</p>
+      </div>`).join('')}
+    </div>
+    <small>Sources: Wikipedia, Wikimedia Commons, TottenhamHotspur.com</small>`;
+}
+
+// Players & Managers
+function renderPlayers() {
+  const section = document.getElementById('players');
+  section.innerHTML = `<h2>Famous Players & Managers</h2>
+    <div class="card-list">${playersData.map(p => `
+      <div class="card">
+        <img src="${p.image}" alt="${p.name}">
+        <h2>${p.name} <span style="font-size:0.9em; color:#666;">(${p.role})</span></h2>
+        <p>${p.bio}</p>
+      </div>`).join('')}
+    </div>
+    <small>Sources: Wikipedia, Wikimedia Commons, TottenhamHotspur.com</small>`;
+}
+
+// Celebrity Fans
+function renderFans() {
+  const section = document.getElementById('fans');
+  section.innerHTML = `<h2>Celebrity Fans</h2>
+    <div class="card-list">${fansData.map(fan => `
+      <div class="card">
+        <img src="${fan.image}" alt="${fan.name}">
+        <h2>${fan.name}</h2>
+        <p>${fan.info}</p>
+      </div>`).join('')}
+    </div>
+    <small>Sources: Wikipedia, Wikimedia Commons, news sites</small>`;
+}
+
+// Initial Render
 renderTimeline();
+renderAchievements();
+renderPlayers();
+renderFans();
+showSection('timeline'); // Default
+
+// -- END OF FILE --

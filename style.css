@@ -1,39 +1,135 @@
 body {
-  font-family: 'Lato', sans-serif;
-  background: #f5f7fa;
   margin: 0;
+  font-family: 'Lato', Arial, sans-serif;
+  color: #132257;
+  background: #f7faff;
+  min-height: 100vh;
+  position: relative;
 }
+
+/* Spurs emblem as subtle background */
+body::before {
+  content: "";
+  position: fixed;
+  z-index: 0;
+  top: 0; left: 0; width: 100vw; height: 100vh;
+  background: url('https://upload.wikimedia.org/wikipedia/commons/1/1a/Tottenham_Hotspur_logo.svg') center center no-repeat;
+  background-size: 50vw auto;
+  opacity: 0.08;
+  pointer-events: none;
+}
+
 nav {
   background: #132257;
-  padding: 10px;
+  padding: 0.5em 1em;
   display: flex;
-  gap: 10px;
+  gap: 1em;
+  position: sticky;
+  top: 0;
+  z-index: 10;
 }
 nav button {
   background: #fff;
   color: #132257;
   border: none;
-  padding: 10px 20px;
+  padding: 0.7em 1.5em;
   border-radius: 20px;
   cursor: pointer;
   font-weight: bold;
+  font-size: 1em;
+  transition: background 0.2s, color 0.2s;
 }
-nav button:hover {
+nav button:hover, nav button.active {
   background: #ffd700;
+  color: #132257;
 }
+
+header {
+  text-align: center;
+  margin: 2em 0 1em 0;
+  z-index: 1;
+  position: relative;
+}
+
+main {
+  max-width: 800px;
+  margin: auto;
+  padding: 2em 1em 4em 1em;
+  position: relative;
+  z-index: 1;
+}
+
 .content-section {
-  padding: 2rem;
   display: block;
 }
+
+.card-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5em;
+  justify-content: flex-start;
+}
+
 .card {
   background: #fff;
-  border-radius: 10px;
-  padding: 1rem;
-  margin-bottom: 1rem;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  border-radius: 12px;
+  box-shadow: 0 2px 12px rgba(19,34,87,0.07);
+  padding: 1.2em;
+  flex: 1 1 260px;
+  max-width: 320px;
   cursor: pointer;
-  transition: box-shadow 0.2s;
+  transition: box-shadow 0.2s, transform 0.15s;
+  min-width: 220px;
+  position: relative;
+  z-index: 2;
 }
+
 .card:hover {
-  box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+  box-shadow: 0 4px 22px rgba(19,34,87,0.12);
+  transform: translateY(-2px) scale(1.03);
+  background: #f9f6e7;
+}
+
+.card img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+  margin-bottom: 0.7em;
+  display: block;
+}
+
+.card h2 {
+  margin-top: 0;
+  margin-bottom: 0.4em;
+  font-size: 1.2em;
+}
+
+.card p {
+  margin: 0.3em 0;
+  font-size: 1em;
+}
+
+footer {
+  background: #132257;
+  color: #fff;
+  text-align: center;
+  padding: 1.2em 0 0.5em 0;
+  margin-top: 2em;
+  z-index: 1;
+  position: relative;
+  font-size: 0.92em;
+}
+
+@media (max-width: 600px) {
+  nav {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .card-list {
+    flex-direction: column;
+    gap: 1em;
+  }
+  main {
+    padding: 1em 0.5em 3em 0.5em;
+  }
 }
